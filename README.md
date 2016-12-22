@@ -18,6 +18,8 @@ Run the following in terminal
 ```
 $ python main.py
 ```
+or with all the variables defined
+```
 $ python main.py --verbose --trainingIterations 120 --learningRate 0.0005
 ```
 
