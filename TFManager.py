@@ -103,7 +103,7 @@ def trainTensor(trainingData, trainingLabels, validationData, validationLabels, 
 	predictor, hiddenLayers['fc1'], hiddenLayers['fc2'] = _generateTensorLayers(X, outputSize)
 
 	#Create our cost and optimizing functions
-	costFunction = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(predictor, Y))
+	costFunction = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=predictor, labels=Y))
 	optimizingFunction = tf.train.AdamOptimizer(learning_rate=learningRate).minimize(costFunction)
 	
 	#Init saver class
@@ -147,7 +147,7 @@ def trainTensor(trainingData, trainingLabels, validationData, validationLabels, 
 		print("-------------------------------------------------")
 		
 		#Save our trained model to be loaded later if desired
-		saver.save(session, 'trainedModel')
+		saver.save(session, '/tmp/trainedModel.ckpt' )
 		
 		#Ask for user if they would like to enter their own data
 		print("The network has finished training!")
